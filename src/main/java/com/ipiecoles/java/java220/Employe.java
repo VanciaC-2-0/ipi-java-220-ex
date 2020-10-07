@@ -13,7 +13,17 @@ public class Employe {
     private static LocalDate dateEmbauche;
     private static Double salaire;
 
+    public Employe() {
 
+    }
+
+    public Employe(String nom, String prenom, String matricule, LocalDate dateEmbauche, Double salaire) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.matricule = matricule;
+        this.dateEmbauche = dateEmbauche;
+        this.salaire = salaire;
+    }
 
     public static String getNom() {
         return nom;

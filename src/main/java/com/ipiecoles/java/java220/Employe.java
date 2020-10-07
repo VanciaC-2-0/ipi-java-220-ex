@@ -8,9 +8,13 @@ import org.joda.time.LocalDate;
 public class Employe {
 
     private static String nom;
+
     private static String prenom;
+
     private static String matricule;
+
     private static LocalDate dateEmbauche;
+
     private static Double salaire;
 
     public Employe() {
@@ -61,7 +65,10 @@ public class Employe {
         Employe.matricule = matricule;
     }
 
-    public static void setDateEmbauche(LocalDate dateEmbauche) {
+    public static void setDateEmbauche(LocalDate dateEmbauche) throws Exception {
+        if (dateEmbauche != null && dateEmbauche.isAfter(LocalDate.now())){
+            throw new Exception("La date d'embauche ne peut être postérieure à la date courante");
+        }
         Employe.dateEmbauche = dateEmbauche;
     }
 

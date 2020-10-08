@@ -37,6 +37,17 @@ public class Employe {
         return Entreprise.NB_CONGES_BASE;
     }
 
+    public String toString(){
+        final StringBuilder sb = new StringBuilder("Employe{");
+        sb.append("nom='").append(nom).append('\'');
+        sb.append(", prenom='").append(prenom).append('\'');
+        sb.append(", matricule='").append(matricule).append('\'');
+        sb.append(", dateEmbauche=").append(dateEmbauche);
+        sb.append(", salaire=").append(salaire);
+        sb.append('}');
+        return sb.toString();
+    }
+
     public static String getNom() {
         return nom;
     }

@@ -67,6 +67,14 @@ public class Employe {
         return Objects.hash(nom, prenom, matricule, dateEmbauche, salaire);
     }
 
+    public void augmenterSalaire(Double pourcentage) {
+        this.salaire = this.getSalaire() * (1 + pourcentage);
+    }
+
+    public Double getPrimeAnnuelle(){
+        return Entreprise.primeAnnuelleBase();
+    }
+
     public String getNom() {
         return nom;
     }

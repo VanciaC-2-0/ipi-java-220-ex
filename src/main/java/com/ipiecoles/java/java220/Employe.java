@@ -67,9 +67,16 @@ public class Employe {
         return Objects.hash(nom, prenom, matricule, dateEmbauche, salaire);
     }
 
+    /**
+     *Augmente le salaire du pourcentage renseigné:
+     * Ex: Salaire à 1000, pourcentage = 0.05 => salaire à 1050
+     *
+     * @param pourcentage pourcentage est strictement positif et non null
+     */
     public void augmenterSalaire(Double pourcentage) {
         this.salaire = this.getSalaire() * (1 + pourcentage);
     }
+
 
     public Double getPrimeAnnuelle(){
         return Entreprise.primeAnnuelleBase();

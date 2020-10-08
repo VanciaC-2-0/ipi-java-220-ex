@@ -4,6 +4,8 @@ import org.joda.time.LocalDate;
 
 import java.util.Objects;
 
+
+
 public class Commercial extends Employe{
 
     private Double caAnnuel = 0d;
@@ -11,7 +13,7 @@ public class Commercial extends Employe{
     private Integer performance;
 
     public Commercial(){
-
+        super();
     }
 
     public Commercial(String nom, String prenom, String matricule, LocalDate dateEmbauche, Double salaire, Double caAnnuel) {
@@ -31,12 +33,12 @@ public class Commercial extends Employe{
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Commercial that = (Commercial) o;
-        return Objects.equals(caAnnuel, that.caAnnuel);
+        return Objects.equals(caAnnuel, that.caAnnuel) && Objects.equals(performance, that.performance);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), caAnnuel);
+        return Objects.hash(super.hashCode(), caAnnuel, performance);
     }
 
     public Commercial(Double caAnnuel) {
@@ -46,7 +48,10 @@ public class Commercial extends Employe{
 
     @Override
     public Double getPrimeAnnuelle() {
-        return Math.max(Math.ceil(this.getCaAnnuel() * 0.05), 500);
+        if(this.caAnnuel != null){
+            return Math.max(Math.ceil(this.caAnnuel * 0.05), 500d);
+        }
+        return 500d;
     }
 
     public boolean performanceEgale(Integer performance){
@@ -55,6 +60,22 @@ public class Commercial extends Employe{
         }
         else{
             return false;
+        }
+    }
+
+    public Note equivalenceNote(){
+        switch (performance) {
+            case 0:
+            case 50:
+                return Note.INSUFFISANT;
+            case 100:
+                return Note.PASSABLE;
+            case 150:
+                return Note.BIEN;
+            case 200:
+                return Note.TRES_BIEN;
+            default:
+                return null;
         }
     }
 
